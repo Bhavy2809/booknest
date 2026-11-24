@@ -1,0 +1,8 @@
+# Copy this file to application-local.properties (same folder) and paste your key.
+# That file is ignored by Git, so your key is not uploaded by accident.
+# Get a free Gemini key at https://aistudio.google.com/apikey
+
+app.llm.api-key=PASTE_YOUR_KEY_HERE
+
+# Optional: use a different model (see the Gemini docs for the current free-tier models)
+# app.llm.model=gemini-3.5-flash-lite

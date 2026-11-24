@@ -1,0 +1,22 @@
+BookNest source rebuilt from BookNest_Report_2.pdf (Appendix A)
+
+The code printed in the PDF is not copy-paste safe. These are the spots that break if copied directly,
+already corrected in this folder:
+
+1. Long lines are wrapped in the PDF. All wraps have been joined back.
+2. BookService.java       "thenCom paring"           -> thenComparing        (compile error)
+3. ClaudeClient.java      "writeValueAs String("     -> writeValueAsString(  (compile error)
+4. OpenAiCompatibleClient "writeValueAs String("     -> writeValueAsString(  (compile error)
+5. TfIdfIndex.java        regex "\\p{L}\\ p{Nd}"     -> "\\p{L}\\p{Nd}"      (silently wrong tokenizing)
+6. Toast.jsx, api.js, genres.js, BookDetail.jsx: "$ {x}" -> "${x}" in template strings
+   (no error, but wrong text: toast colours, error messages, call numbers and the Edit link URL broke)
+7. CSS "calc(100vh -40px)" -> "calc(100vh - 40px)" (invalid CSS otherwise)
+
+ADDED: backend/src/main/resources/seed-books.json
+The report says this file was left out. Without it the backend crashes on first start
+(DataSeeder reads it). This version has 49 books in the 10 genres the app uses, and includes
+The Hobbit, Dune, Foundation and The Name of the Wind, which DataSeeder needs for the demo student.
+Replace it with your team's original file if you still have it.
+
+Run (Windows): double-click run-backend.bat, then run-frontend.bat, open http://localhost:5173
+Login: student@booknest.com / student123   or   admin@booknest.com / admin123
